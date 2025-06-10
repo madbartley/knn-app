@@ -12,6 +12,8 @@ from flask import render_template
 import numpy as np
 import pickle
 from joblib import load
+import random
+import pandas as pd
 
 # create an instance of the Flask class, _name_ being a standin for the application's module or package
 app = Flask(__name__)
@@ -28,8 +30,19 @@ def hello_world():
 @app.route("/predict", methods=['POST'])
 def predict():
     input_chars = [float(x) for x in request.form.values()]
+    if(len(input_chars) > 0):
+        input_chars = [float(x) for x in request.form.values()]
+    else:
+        data = pd.read_csv('KNNGenerateSet.csv')
+        data['diagnosis']=data['diagnosis'].map({'M':1,'B':0})
+        data = data.dropna(axis=1)
+        data = data.drop('id',axis=1)
+        X = data.drop('diagnosis',axis=1)
+        y = data['diagnosis']
+        random_set = random.randrange(0, 13, 1)
+        input_chars = X.loc[random_set, :]
     features = [np.array(input_chars)]
-    scaler = load('../std_scaler.bin')
+    scaler = load('std_scaler.bin')
     features_std = scaler.transform(features)
     predict = loaded_model.predict(features_std)
     if(predict[0] == 0):

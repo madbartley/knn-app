@@ -19,7 +19,7 @@ from joblib import dump, load
 '''
 # Loading and preprocessing the data
 # Import the csv file with all the data, and call it "data" - we're going to create some data frames to quickly get some info about the data in the csv
-data = pd.read_csv("KNNAlgorithmDataset.csv")
+data = pd.read_csv("KNNAlgorithmDatasetTrainTest.csv")
 # View the first 10 rows of the file + column names
 data.head(10)
 # For each column, we will get info on mean, std dev, and percentiles
@@ -86,6 +86,7 @@ pickle.dump(model, knnPickle)
 
 # close the file
 knnPickle.close()
+
 '''
 
 
@@ -93,8 +94,8 @@ knnPickle.close()
 # Predicting
 # Now we can try out our predictions using the test data
 # We'll test the data, then we'll look at the data by reshaping our array into 10 samples of just 1 dimension, the predicition
-
 '''
+
 predictions = model.predict(X_test_std)
 prnt = predictions[:10].reshape(10,1)
 prnt
@@ -111,9 +112,9 @@ newDataBS = scaler.transform(newDataB)
 predictions2 = model.predict(newDataBS)
 prnt = predictions2.reshape(1,1)
 prnt
-'''
 
-'''
+
+
 ### taking predicitions from loaded model
 
 # load the model from disk
