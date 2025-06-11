@@ -4,77 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/app.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
     <title>Welcome</title>
 </head>
 <body>
-    <h1>Machine Learning Mini-Project: KNN</h1>
 
-    <div class="">
-	<h3>Predicting cancer diagnosis based on tumor features</h3>
-    <h2>Using K-Nearest Neighbors</h2>
+    <div class="heading">
+        <div>header</div>
+    </div>
 
+    <div class="menu"><div>menu</div></div>
+
+    <div class="title">
+        <div>Machine Learning Mini-Project: KNN</div>
+    </div>
+
+	<div class="subtitle">
+        <div class="subbed"><p>Predicting cancer diagnosis based on tumor features</p></div>
+        <div class="subbed"><p id="knn-subtitle">Using K-Nearest Neighbors</p></div>
+    </div>
+
+    <div class="knn">
     <form action="{{ url_for('predict')}}"method="post">
         <div class="container">
-    	<div>
-        <input type="text" name="radius_mean" placeholder="radius_mean" required="required" /><p>
-        <input type="text" name="texture_mean" placeholder="texture_mean" required="required" /><p>
-        <input type="text" name="perimeter_mean" placeholder="perimeter_mean" required="required" /><p>
-        <input type="text" name="area_mean" placeholder="area_mean" required="required" /><p>
-        <input type="text" name="smoothness_mean" placeholder="smoothness_mean" required="required" /><p>
-        <input type="text" name="compactness_mean" placeholder="compactness_mean" required="required" /><p>
-        </div>
+        <div><input type="text" name="radius_mean" placeholder="radius_mean" required="required" /></div>
+        <div><input type="text" name="texture_mean" placeholder="texture_mean" required="required" /></div>
+        <div><input type="text" name="perimeter_mean" placeholder="perimeter_mean" required="required" /></div>
+        <div><input type="text" name="area_mean" placeholder="area_mean" required="required" /></div>
+        <div><input type="text" name="smoothness_mean" placeholder="smoothness_mean" required="required" /></div>
+        <div><input type="text" name="compactness_mean" placeholder="compactness_mean" required="required" /></div>
+        
+        <div><input type="text" name="concavity_mean" placeholder="concavity_mean" required="required" /></div>
+        <div><input type="text" name="concave_points_mean" placeholder="concave_points_mean" required="required" /></div>
+        <div><input type="text" name="symmetry_mean" placeholder="symmetry_mean" required="required" /></div>
+        <div><input type="text" name="fractal_dimension_mean" placeholder="fractal_dimension_mean" required="required" /></div>
+        <div><input type="text" name="radius_se" placeholder="radius_se" required="required" /></div>
+        <div><input type="text" name="texture_se" placeholder="texture_se" required="required" /></div>
 
+        <div><input type="text" name="perimeter_se" placeholder="perimeter_se" required="required" /></div>
+        <div><input type="text" name="area_se" placeholder="area_se" required="required" /></div>
+        <div><input type="text" name="smoothness_se" placeholder="smoothness_se" required="required" /></div>
+        <div><input type="text" name="compactness_se" placeholder="compactness_se" required="required" /></div>
+        <div><input type="text" name="concavity_se" placeholder="concavity_se" required="required" /></div>
+        <div><input type="text" name="concave_points_se" placeholder="concave_points_se" required="required" /></div>
+        
+        <div><input type="text" name="symmetry_se" placeholder="symmetry_se" required="required" /></div>
+        <div><input type="text" name="fractal_dimension_se" placeholder="fractal_dimension_se" required="required" /></div>
+        <div><input type="text" name="radius_worst" placeholder="radius_worst" required="required" /></div>
+        <div><input type="text" name="texture_worst" placeholder="texture_worst" required="required" /></div>
+        <div><input type="text" name="perimeter_worst" placeholder="perimeter_worst" required="required" /></div>
+        <div><input type="text" name="area_worst" placeholder="area_worst" required="required" /></div>
+        
+        <div><input type="text" name="smoothness_worst" placeholder="smoothness_worst" required="required" /></div>
+        <div><input type="text" name="compactness_worst" placeholder="compactness_worst" required="required" /></div>
+        <div><input type="text" name="concavity_worst" placeholder="concavity_worst" required="required" /></div>
+        <div><input type="text" name="concave_points_worst" placeholder="concave_points_worst" required="required" /></div>
+        <div><input type="text" name="symmetry_worst" placeholder="symmetry_worst" required="required" /></div>
+        <div><input type="text" name="fractal_dimension_worst" placeholder="fractal_dimension_worst" required="required" /></div>
+        
         <div>
-        <input type="text" name="concavity_mean" placeholder="concavity_mean" required="required" /><p>
-        <input type="text" name="concave_points_mean" placeholder="concave_points_mean" required="required" /><p>
-        <input type="text" name="symmetry_mean" placeholder="symmetry_mean" required="required" /><p>
-        <input type="text" name="fractal_dimension_mean" placeholder="fractal_dimension_mean" required="required" /><p>
-        <input type="text" name="radius_se" placeholder="radius_se" required="required" /><p>
-        <input type="text" name="texture_se" placeholder="texture_se" required="required" /><p>
-        </div>
-
-        <div>
-        <input type="text" name="perimeter_se" placeholder="perimeter_se" required="required" /><p>
-        <input type="text" name="area_se" placeholder="area_se" required="required" /><p>
-        <input type="text" name="smoothness_se" placeholder="smoothness_se" required="required" /><p>
-        <input type="text" name="compactness_se" placeholder="compactness_se" required="required" /><p>
-        <input type="text" name="concavity_se" placeholder="concavity_se" required="required" /><p>
-        <input type="text" name="concave_points_se" placeholder="concave_points_se" required="required" /><p>
-        </div>
-
-        <div>
-        <input type="text" name="symmetry_se" placeholder="symmetry_se" required="required" /><p>
-        <input type="text" name="fractal_dimension_se" placeholder="fractal_dimension_se" required="required" /><p>
-        <input type="text" name="radius_worst" placeholder="radius_worst" required="required" /><p>
-        <input type="text" name="texture_worst" placeholder="texture_worst" required="required" /><p>
-        <input type="text" name="perimeter_worst" placeholder="perimeter_worst" required="required" /><p>
-        <input type="text" name="area_worst" placeholder="area_worst" required="required" /><p>
-        </div>
-
-        <div>
-        <input type="text" name="smoothness_worst" placeholder="smoothness_worst" required="required" /><p>
-        <input type="text" name="compactness_worst" placeholder="compactness_worst" required="required" /><p>
-        <input type="text" name="concavity_worst" placeholder="concavity_worst" required="required" /><p>
-        <input type="text" name="concave_points_worst" placeholder="concave_points_worst" required="required" /><p>
-        <input type="text" name="symmetry_worst" placeholder="symmetry_worst" required="required" /><p>
-        <input type="text" name="fractal_dimension_worst" placeholder="fractal_dimension_worst" required="required" /><p>
-        </div>
-        </div>
         <button type="submit" class="submit-button">Predict whether this tumor will be cancerous or benign</button></p>
+        </div>
+
+        </div>
     </form>
+    </div>
 
-    <div><p>or</p></div>
+    <div class="or"><div>or</div></div>
 
-    <form action="{{ url_for('predict')}}"method="post">
-    <button type="submit" class="random-button">Madeline, that's too many fields. Can you just generate a test for me?</button>
-    </form>
+    <div class="random">
+        <div><form action="{{ url_for('predict')}}"method="post">
+        <label>Madeline, that's too many fields. Can you just generate a test for me?</label>
+        <button type="submit" class="random-button">Sure!</button>
+        </form>
+        </div>
+    </div>
 
-   <h3>Results</h3>
-   <h4>{{ output }} </h4>
+    <div class="results">
+        <div id="output-results"><h3>Results</h3></div>
+        <div>{{ output }} </div>
+    </div>
 
- </div>
-
- <footer><p>data taken from the following Kaggle page: https://www.kaggle.com/datasets/gkalpolukcu/knn-algorithm-dataset</p></footer>
+    <div class="footing">
+        <div><footer><p>data taken from the following Kaggle page: https://www.kaggle.com/datasets/gkalpolukcu/knn-algorithm-dataset</p></footer></div>
+    </div>
     
 </body>
 </html>

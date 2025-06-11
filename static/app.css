@@ -1,11 +1,114 @@
 
 
+body {
+    background-color: #EEDED0;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    display: grid;
+    grid-template-areas: 
+        "heading heading heading"
+        "menu title random"
+        "menu subtitle random"
+        "menu knn random"
+        "menu or random"
+        "menu results random"
+        "footing footing footing";
+    grid-template-columns: 15% 60% 25%;
+    grid-template-rows: 10% 10% 10% 10% 10% 20% 30%;
+}
+
 .container {
+    margin: 5px;
+    padding-top: 10px;
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.submit-button {
+    margin: 25px;
 }
 
 input {
     margin: 5px;
-    width: 50px;
 }
+
+div.heading {
+    margin: 2px;
+    grid-area: heading;
+}
+
+div.menu {
+    margin: 2px;
+    grid-area: menu;
+}
+
+div.title {
+    margin: 2px;
+    grid-area: title;
+    font-family: "IBM Plex Serif", serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div.subtitle {
+    margin: 2px;
+    grid-area: subtitle;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2px;
+}
+
+.subbed {
+    height: 40px;
+    margin: 2px;
+}
+
+#knn-subtitle {
+    font-size: 22px;
+    position: relative;
+    top: -28px;
+    font-family: "IBM Plex Serif", serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+div.knn {
+    background-color: #0B7189;
+    margin: 2px;
+    grid-area: knn;
+}
+
+div.or {
+    background-color: #8C2F39;
+    margin: 2px;
+    grid-area: or;
+}
+
+div.random {
+    background-color: #E88D67;
+    margin: 2px;
+    grid-area: random;
+}
+
+div.results {
+    background-color: black;
+    margin: 2px;
+    grid-area: results;
+}
+
+div.footing {
+    background-color: #EEDED0;
+    margin: 2px;
+    grid-area: footing;
+}
+
+
