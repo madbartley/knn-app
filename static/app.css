@@ -1,26 +1,40 @@
-
-
 body {
-    background-color: #EEDED0;
+    background-color: #e0b290;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
     display: grid;
+    justify-content: center;
     grid-template-areas: 
-        "heading heading heading"
-        "menu title random"
-        "menu subtitle random"
-        "menu knn random"
-        "menu or random"
-        "menu results random"
-        "footing footing footing";
-    grid-template-columns: 15% 60% 25%;
-    grid-template-rows: 10% 10% 10% 10% 10% 20% 30%;
+        "heading heading heading heading"
+        "left title title right"
+        "left subtitle subtitle right"
+        "left knn random right"
+        "left results results right"
+        "footing footing footing footing";
+    grid-template-columns: auto 47% 47% auto;
+    /*grid-template-rows: 10% 10% 10% 10% 10% 20% 30%*/;
+}
+
+
+button {
+    background-color: #A5E9D3;
+    border-radius: 10px;
+    min-height: 25px;
+    min-width: 75px;
+    border-color: #abffe5;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 12px;
+}
+
+button:hover {
+    background-color: #66bca1;
 }
 
 .container {
     margin: 5px;
-    padding-top: 10px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -28,22 +42,40 @@ body {
     justify-content: center;
 }
 
+.hidden {
+    margin: 7px;
+    width: 145px;
+}
+
 .submit-button {
     margin: 25px;
+    width: 350px;
 }
 
 input {
-    margin: 5px;
+    margin: 3px;
+    width: 145px;
 }
 
 div.heading {
-    margin: 2px;
     grid-area: heading;
+    background-color: #8c2f39;
+    color:#eeded0;
+    width: 100vw;
+    height: 30px;
+    position: absolute;
+    left:0px;
+    top: 0px;
 }
 
-div.menu {
+div.left {
     margin: 2px;
-    grid-area: menu;
+    grid-area: left;
+}
+
+div.right {
+    margin: 2px;
+    grid-area: right;
 }
 
 div.title {
@@ -52,10 +84,12 @@ div.title {
     font-family: "IBM Plex Serif", serif;
     font-weight: 500;
     font-style: normal;
-    font-size: 25px;
+    font-size: 35px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    top:15px;
 }
 
 div.subtitle {
@@ -70,45 +104,146 @@ div.subtitle {
 .subbed {
     height: 40px;
     margin: 2px;
+    font-size: 20;
 }
 
 #knn-subtitle {
     font-size: 22px;
     position: relative;
-    top: -28px;
+    top: -32px;
     font-family: "IBM Plex Serif", serif;
     font-weight: 500;
     font-style: normal;
 }
 
+/* color scheme: RED: #8C2F39 BLUE: #0B7189 ORANGE: #E88D67 CREAM: #EEDED0 BLACK*/
+
 div.knn {
-    background-color: #0B7189;
     margin: 2px;
+    margin-right: 5px;
     grid-area: knn;
+    background-color: #eeded0;
+    height: 375px;
+    border-radius: 10px;
 }
 
-div.or {
-    background-color: #8C2F39;
+.or {
     margin: 2px;
     grid-area: or;
+    height: 5px;
+    position: absolute;
+    left: 750px;
+    top: 200px;
+    z-index: 100;
+    font-family: "IBM Plex Serif", serif;
+    font-weight: 500;
+    font-style:italic;
+    font-size: 30px;
+    color:#8c2f39;
+}
+
+.labels {
+    margin: 2px;
+    font-size: 12px;
+    width: 140px;
+    height: 20px;
+}
+
+.testers {
+    color:#8c2f39;
+    width: 15px;
+    font-size: 12px;
+    font-style: oblique;
+    font-weight:500;
+}
+
+.label-flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    row-gap: 7px;
+    column-gap: 5px;
+    position: relative;
+    left: 50px;
+    bottom: -10px;
 }
 
 div.random {
-    background-color: #E88D67;
     margin: 2px;
+    margin-left: 5px;
     grid-area: random;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #eeded0;
+    height: 375px;
+    border-radius: 10px;
+}
+
+.random-label {
+    margin: 2px;
+    font-size: 15px;
+    width: 350px;
+    text-align: center;
+}
+
+.random-button {
+    margin: 2px;
+    position: relative;
+    left: 45%;
 }
 
 div.results {
-    background-color: black;
-    margin: 2px;
+    margin: 5px;
     grid-area: results;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    min-height: 120px;
+    background-color: #A5E9D3;
 }
 
+
 div.footing {
-    background-color: #EEDED0;
-    margin: 2px;
     grid-area: footing;
+    width: 100vw;
+    height: 35px;
+    color:#eeded0;
+    background-color: #8c2f39;
+    position: absolute;
+    left:0px;
+    bottom: 0px;
+}
+
+.predict-button {
+    width: 410px;
+}
+
+.name {
+    position: relative;
+    bottom: -8px;
+    font-size: 12px;
+}
+
+#kaggle-credit {
+    font-size: 12px;
+    padding: 2px;
+}
+
+#sample-data {
+    font-size: 15px;
+    text-align: center;
+}
+
+#predict-subtitle {
+    font-size: 20px;
+    position: relative;
+    top: -5px;
+}
+
+#output-results {
+    font-size: 35px;
 }
 
 

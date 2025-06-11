@@ -16,21 +16,22 @@
 <body>
 
     <div class="heading">
-        <div>header</div>
+        <div class="name">Developed by Madeline Bartley</div>
     </div>
 
-    <div class="menu"><div>menu</div></div>
+    <div class="left"><div></div></div>
 
     <div class="title">
         <div>Machine Learning Mini-Project: KNN</div>
     </div>
 
 	<div class="subtitle">
-        <div class="subbed"><p>Predicting cancer diagnosis based on tumor features</p></div>
+        <div class="subbed"><p id="predict-subtitle">Predicting cancer diagnosis based on tumor features</p></div>
         <div class="subbed"><p id="knn-subtitle">Using K-Nearest Neighbors</p></div>
     </div>
 
     <div class="knn">
+    <div id="sample-data"><p>Enter in your sample data here</p></div>
     <form action="{{ url_for('predict')}}"method="post">
         <div class="container">
         <div><input type="text" name="radius_mean" placeholder="radius_mean" required="required" /></div>
@@ -67,8 +68,10 @@
         <div><input type="text" name="concave_points_worst" placeholder="concave_points_worst" required="required" /></div>
         <div><input type="text" name="symmetry_worst" placeholder="symmetry_worst" required="required" /></div>
         <div><input type="text" name="fractal_dimension_worst" placeholder="fractal_dimension_worst" required="required" /></div>
+        <div class="hidden"></div>
+        <div class="hidden"></div>
         
-        <div>
+        <div class="predict-button">
         <button type="submit" class="submit-button">Predict whether this tumor will be cancerous or benign</button></p>
         </div>
 
@@ -76,23 +79,63 @@
     </form>
     </div>
 
-    <div class="or"><div>or</div></div>
+    <div class="or"><div>Or</div></div>
 
     <div class="random">
-        <div><form action="{{ url_for('predict')}}"method="post">
-        <label>Madeline, that's too many fields. Can you just generate a test for me?</label>
-        <button type="submit" class="random-button">Sure!</button>
+        <form action="{{ url_for('predict')}}"method="post">
+        <div class="random-label"><p>Madeline, that's too many fields. Can you just generate a test for me?</p></div>
+        <div class="random-button"><button type="submit">Sure!</button></div>
         </form>
+
+        <div class="label-flex-container">
+        <div class="labels">radius_mean:<div class="testers">{{ zero }}</div></div>
+        <div class="labels">texture_mean:<div class="testers">{{ one }}</div></div>
+        <div class="labels">perimeter_mean:<div class="testers">{{ two }}</div></div>
+        <div class="labels">area_mean:<div class="testers">{{ three }}</div></div>
+        <div class="labels">smoothness_mean:<div class="testers">{{ four }}</div></div>
+        <div class="labels">compactness_mean:<div class="testers">{{ five }}</div></div>
+        
+        <div class="labels">concavity_mean:<div class="testers">{{ six }}</div></div>
+        <div class="labels">concave_points_mean:<div class="testers">{{ seven }}</div></div>
+        <div class="labels">symmetry_mean:<div class="testers">{{ eight }}</div></div>
+        <div class="labels">fractal_dim._mean:<div class="testers">{{ nine }}</div></div>
+        <div class="labels">radius_se:<div class="testers">{{ ten }}</div></div>
+        <div class="labels">texture_se:<div class="testers">{{ eleven }}</div></div>
+
+        <div class="labels">perimeter_se:<div class="testers">{{ twelve }}</div></div>
+        <div class="labels">area_se:<div class="testers">{{ thirteen }}</div></div>
+        <div class="labels">smoothness_se:<div class="testers">{{ fourteen }}</div></div>
+        <div class="labels">compactness_se:<div class="testers">{{ fifteen }}</div></div>
+        <div class="labels">concavity_se:<div class="testers">{{ sixteen }}</div></div>
+        <div class="labels">concave_points_se:<div class="testers">{{ seventeen }}</div></div>
+        
+        <div class="labels">symmetry_se: <div class="testers">{{ eighteen }}</div></div>
+        <div class="labels">fractal_dim._se: <div class="testers">{{ nineteen }}</div></div>
+        <div class="labels">radius_worst: <div class="testers">{{ twenty }}</div></div>
+        <div class="labels">texture_worst: <div class="testers">{{ twentyone }}</div></div>
+        <div class="labels">perimeter_worst: <div class="testers">{{ twentytwo }}</div></div>
+        <div class="labels">area_worst: <div class="testers">{{ twentythree }}</div></div>
+        
+        <div class="labels">smoothness_worst: <div class="testers">{{ twentyfour }}</div></div>
+        <div class="labels">compactness_worst: <div class="testers">{{ twentyfive }}</div></div>
+        <div class="labels">concavity_worst: <div class="testers">{{ twentysix }}</div></div>
+        <div class="labels">concave_points_worst :<div class="testers">{{ twentyseven }}</div></div>
+        <div class="labels">symmetry_worst: <div class="testers">{{ twentyeight }}</div></div>
+        <div class="labels">fractal_dim._worst: <div class="testers">{{ twentynine }}</div></div>
+        <div class="labels">actual diagnosis: <div class="testers">{{ label }}</div></div>
+        <div class="labels"></div>
         </div>
     </div>
 
     <div class="results">
-        <div id="output-results"><h3>Results</h3></div>
-        <div>{{ output }} </div>
+        <div><h3>Results</h3></div>
+        <div id="output-results">{{ output }} </div>
     </div>
 
+    <div class="right"></div>
+
     <div class="footing">
-        <div><footer><p>data taken from the following Kaggle page: https://www.kaggle.com/datasets/gkalpolukcu/knn-algorithm-dataset</p></footer></div>
+        <footer><p id="kaggle-credit">data taken from the following Kaggle page: https://www.kaggle.com/datasets/gkalpolukcu/knn-algorithm-dataset</p></footer>
     </div>
     
 </body>
